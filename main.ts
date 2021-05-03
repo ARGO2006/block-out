@@ -69,17 +69,22 @@ let projectile = sprites.createProjectileFromSprite(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    . . . . . . 9 9 9 . . . . . . . 
-    . . . . . 9 6 7 6 9 . . . . . . 
-    . . . . 9 6 7 6 7 6 9 . . . . . 
-    . . . . 1 7 1 7 1 7 1 . . . . . 
-    . . . . 8 6 7 6 7 6 8 . . . . . 
-    . . . . . 8 6 7 6 8 . . . . . . 
-    . . . . . . 8 8 8 . . . . . . . 
+    . . . . . . 2 2 4 . . . . . . . 
+    . . . . . 2 2 2 2 4 . . . . . . 
+    . . . . 2 2 b b b 2 4 . . . . . 
+    . . . . b b b 1 b b b . . . . . 
+    . . . . d 1 b b b 1 1 . . . . . 
+    . . . . . d 1 1 1 1 . . . . . . 
+    . . . . . . d 1 1 . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     `, paddle, 50, -55)
+if (true) {
+	
+} else {
+	
+}
 projectile.setFlag(SpriteFlag.DestroyOnWall, false)
 projectile.setBounceOnWall(true)
 for (let index = 0; index <= 9; index++) {
@@ -91,60 +96,60 @@ for (let index = 0; index <= 9; index++) {
         tilePick = randint(0, 2)
         if (tilePick == 0) {
             tile = sprites.create(img`
-                8 8 1 1 8 8 6 6 1 7 7 7 1 8 8 9 
-                8 8 9 1 1 6 6 9 9 8 8 7 1 8 8 9 
-                7 6 9 9 9 8 8 7 9 8 8 6 6 1 9 9 
-                7 6 6 1 1 8 8 7 9 1 6 6 1 1 9 9 
-                7 7 6 1 1 6 6 7 7 8 8 1 1 1 7 9 
-                8 8 9 1 6 6 9 9 9 8 8 1 6 1 7 9 
-                8 8 9 9 9 7 8 8 9 6 6 1 6 6 7 7 
-                7 7 7 8 8 7 8 8 6 6 9 9 9 6 8 8 
-                7 6 6 8 8 7 7 6 1 7 7 7 9 1 8 8 
-                6 6 7 7 7 1 1 6 6 7 1 8 8 7 7 7 
-                1 1 7 9 9 9 1 1 6 1 1 8 8 7 1 9 
-                8 8 1 1 6 9 8 8 6 1 9 9 9 1 1 9 
-                8 8 9 1 6 6 8 8 6 6 8 8 9 1 9 9 
-                7 6 9 9 9 6 9 9 9 6 8 8 6 6 7 7 
-                7 6 6 8 8 1 6 6 9 7 9 6 6 8 8 7 
-                7 7 6 8 8 6 6 7 7 7 9 9 9 8 8 7 
+                f f f f f f f f f f f f f f f f 
+                f f f 2 2 2 2 2 2 2 2 2 2 f f f 
+                f f 2 2 2 2 2 2 2 f f 2 2 2 f f 
+                f 2 2 2 2 2 2 2 2 2 f f 2 2 2 f 
+                f 2 2 2 2 2 2 2 2 2 f f 2 2 2 f 
+                f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+                f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+                f 2 f 2 2 2 2 f f 2 2 2 2 2 2 f 
+                f 2 f f f 2 2 f f 2 2 2 2 2 2 f 
+                f 2 2 f f 2 2 2 2 2 2 2 2 2 2 f 
+                f 2 2 2 2 2 2 2 2 2 2 2 2 2 2 f 
+                f 2 2 2 2 2 2 2 2 2 2 f f 2 2 f 
+                f 2 2 2 2 2 2 2 2 2 2 f f 2 2 f 
+                f f 2 2 2 2 2 2 2 2 f f 2 2 f f 
+                f f f 2 2 2 2 2 2 2 2 2 2 f f f 
+                f f f f f f f f f f f f f f f f 
                 `, SpriteKind.block)
         } else if (tilePick == 1) {
             tile = sprites.create(img`
-                3 d 1 3 3 3 3 3 3 3 3 3 3 3 3 3 
-                3 d 1 3 d d d d d d d d d d d 3 
-                3 d 1 3 d 1 1 1 1 1 1 1 1 1 d 3 
-                3 d 1 3 d 1 3 3 3 3 3 3 3 1 d 3 
-                3 d 1 3 d 1 3 d d d d d 3 1 d 3 
-                3 d 1 3 d 1 3 d 1 1 1 d 3 1 d 3 
-                3 d 1 3 d 1 3 d 1 3 1 d 3 1 d 3 
-                3 d 1 3 d 1 3 d 1 3 1 d 3 1 d 3 
-                3 d 1 3 d 1 3 d d 3 1 d 3 1 d 3 
-                3 d 1 3 d 1 3 3 3 3 1 d 3 1 d 3 
-                3 d 1 3 d 1 1 1 1 1 1 d 3 1 d 3 
-                3 d 1 3 d d d d d d d d 3 1 d 3 
-                3 d 1 3 3 3 3 3 3 3 3 3 3 1 d 3 
-                3 d 1 1 1 1 1 1 1 1 1 1 1 1 d 3 
-                3 d d d d d d d d d d d d d d 3 
-                3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 
+                f f b b b b b b b b b b b b f f 
+                f f f f f f f f f f f f f f f f 
+                b f b b b b b b b b b b b b f b 
+                b f b f f f f f f f f f f b f b 
+                b f b f b b b b b b b b f b f b 
+                b f b f b f f f f f f b f b f b 
+                b f b f b f c c c c f b f b f b 
+                b f b f b f c f f c f b f b f b 
+                b f b f b f c f f c f b f b f b 
+                b f b f b f c c c c f b f b f b 
+                b f b f b f f f f f f b f b f b 
+                b f b f b b b b b b b b f b f b 
+                b f b f f f f f f f f f f b f b 
+                b f b b b b b b b b b b b b f b 
+                f f f f f f f f f f f f f f f f 
+                f f b b b b b b b b b b b b f f 
                 `, SpriteKind.block)
         } else {
             tile = sprites.create(img`
-                2 2 2 1 1 1 1 1 1 1 1 1 1 1 1 1 
-                1 2 2 2 2 2 2 2 1 1 1 4 4 4 4 4 
-                1 1 2 2 2 2 2 4 4 4 4 4 4 4 4 4 
-                4 4 4 2 2 5 5 5 5 5 5 4 4 4 4 4 
-                4 4 4 4 2 2 2 2 2 5 5 5 5 5 4 4 
-                4 4 b b b b b b b 5 5 5 5 5 5 5 
-                b b b b b b b 5 5 5 5 5 2 2 2 2 
-                b b b b 5 5 5 5 5 5 5 5 5 5 2 2 
-                b b b 2 2 2 2 2 2 2 2 2 1 1 1 1 
-                1 1 1 1 1 1 2 2 2 1 1 1 1 1 1 1 
-                1 1 4 4 2 2 2 2 2 2 2 1 1 1 1 1 
-                4 4 4 4 4 4 2 2 2 2 2 2 2 2 2 4 
-                4 4 4 5 5 5 5 5 5 5 5 5 4 4 4 4 
-                5 5 5 5 5 5 5 5 5 4 4 4 4 4 4 4 
-                b b b b b 5 5 5 5 5 5 5 5 4 4 4 
-                . b b b b b b b b b b b 4 4 4 4 
+                f f f 4 4 4 4 4 4 4 4 4 4 f f f 
+                f f 5 5 5 5 5 5 5 5 5 5 5 5 f f 
+                f 5 4 4 4 4 4 f f 4 4 4 4 4 5 f 
+                4 5 4 4 4 4 4 f f 4 4 4 4 4 5 4 
+                4 5 4 4 4 4 4 f f 4 4 4 4 4 5 4 
+                4 5 4 4 4 4 4 f f 4 4 4 4 4 5 4 
+                4 5 4 f f f f f f f f f f 4 5 4 
+                4 5 4 f f f f f f f f f f 4 5 4 
+                4 5 4 f f f f f f f f f f 4 5 4 
+                4 5 4 4 4 4 4 f f 4 4 4 4 4 5 4 
+                4 5 4 4 4 4 4 f f 4 4 4 4 4 5 4 
+                4 5 4 4 4 4 4 f f 4 4 4 4 4 5 4 
+                4 5 4 4 4 4 4 f f 4 4 4 4 4 5 4 
+                f 5 4 4 4 4 4 4 4 4 4 4 4 4 5 f 
+                f f 5 5 5 5 5 5 5 5 5 5 5 5 f f 
+                f f f 4 4 4 4 4 4 4 4 4 4 f f f 
                 `, SpriteKind.block)
         }
         tile.setPosition(x, index2 * 18 + 20)
