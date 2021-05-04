@@ -22,7 +22,7 @@ function Game () {
         `, SpriteKind.Player)
     paddle.setPosition(79, 100)
     paddle.setStayInScreen(true)
-    controller.moveSprite(paddle, 100, 0)
+    controller.moveSprite(paddle, 150, 0)
     projectile = sprites.createProjectileFromSprite(img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -310,7 +310,9 @@ forever(function () {
     }
 })
 game.onUpdateInterval(10000, function () {
-    projectile.vx += 20
-    projectile.vy += 20
-    mySprite.say("Difficulty +", 500)
+    for (let index = 0; index < 3; index++) {
+        projectile.vx += 20
+        projectile.vy += 20
+        mySprite.say("Difficulty +", 500)
+    }
 })

@@ -1,5 +1,5 @@
 {
-    "name": "block-out",
+    "name": "Block Out",
     "description": "",
     "dependencies": {
         "device": "*"
