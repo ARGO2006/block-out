@@ -2,6 +2,24 @@ namespace SpriteKind {
     export const block = SpriteKind.create()
 }
 function Game () {
+    mySprite = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, SpriteKind.Player)
     paddle.setPosition(79, 100)
     paddle.setStayInScreen(true)
     controller.moveSprite(paddle, 100, 0)
@@ -10,19 +28,20 @@ function Game () {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        . . . . . 9 . . . . . . . . . . 
-        . . . . 9 9 . . . . 9 . . . . . 
-        . . . 9 9 . 9 9 6 . 9 9 . . . . 
-        . . . 9 . 9 9 1 6 6 . 9 9 . . . 
-        . . . . 9 9 1 6 1 6 9 . . . . . 
-        . . . . 9 1 1 6 9 1 9 . . . . . 
-        . . 9 . 9 1 6 6 9 1 9 . . . . . 
-        . . 9 9 . 6 9 9 1 1 . . 9 . . . 
-        . . . 9 9 . 1 1 1 . . 9 9 . . . 
-        . . . . 9 . . . . 9 9 9 . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, paddle, 100, -100)
+        . . . . . . 2 2 4 . . . . . . . 
+        . . . . . 2 2 2 2 4 . . . . . . 
+        . . . . 2 2 b b b 2 4 . . . . . 
+        . . . . b b b 1 b b b . . . . . 
+        . . . . d 1 b b b 1 1 . . . . . 
+        . . . . . d 1 1 1 1 . . . . . . 
+        . . . . . . d 1 1 . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        `, paddle, 60, -60)
+    paddle_speed = 100
     projectile.setFlag(SpriteFlag.DestroyOnWall, false)
     projectile.setBounceOnWall(true)
     for (let index = 0; index <= 9; index++) {
@@ -111,9 +130,9 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.block, function (sprite, oth
     info.changeScoreBy(1)
     getPos(sprite, otherSprite)
     if (direction == 1) {
-        sprite.setVelocity(-0.7 * sprite.vx, sprite.vy)
+        sprite.setVelocity(-1 * sprite.vx, sprite.vy)
     } else {
-        sprite.setVelocity(sprite.vx, -0.7 * sprite.vy)
+        sprite.setVelocity(sprite.vx, -1 * sprite.vy)
     }
     otherSprite.destroy()
 })
@@ -121,7 +140,9 @@ let direction = 0
 let tile: Sprite = null
 let tilePick = 0
 let x = 0
+let paddle_speed = 0
 let projectile: Sprite = null
+let mySprite: Sprite = null
 let paddle: Sprite = null
 scene.setBackgroundImage(img`
     ................................................................................................................................................................
@@ -271,10 +292,10 @@ paddle = sprites.create(img`
     ................................
     ................................
     ................................
-    ...fbbbbbbbbbbbbbbbbbbbbbbf.....
-    ...fbbbbbbbbbbbbbbbbbbbbbbf.....
-    ...ffffffffffffffffffffffff.....
-    ...ffffffffffffffffffffffff.....
+    ....bbbbbbbbbbbbbbbbbbbbbb......
+    ....bbbbbbbbbbbbbbbbbbbbbb......
+    ....bbbbbbbbbbbbbbbbbbbbbb......
+    ................................
     ................................
     ................................
     ................................
@@ -287,4 +308,9 @@ forever(function () {
     if (info.score() == 30) {
         game.over(true, effects.bubbles)
     }
+})
+game.onUpdateInterval(10000, function () {
+    projectile.vx += 20
+    projectile.vy += 20
+    mySprite.say("Difficulty +", 500)
 })
